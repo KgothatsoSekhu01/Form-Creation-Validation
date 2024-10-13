@@ -1,18 +1,16 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("registration-form");
-    const feedbackDiv = document.getElementById("form-feedback");
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('registration-form');
+    const feedbackDiv = document.getElementById('form-feedback');
 
-    form.addEventListener("submit", (event) => {
-        event.preventDefault(); // Prevent form submission
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
 
-        // Retrieve and trim user inputs
-        const username = document.getElementById("username").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value.trim();
+        const username = document.getElementById('username').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
 
-        // Initialize validation variables
         let isValid = true;
-        const messages = [];
+        let messages = [];
 
         // Username validation
         if (username.length < 3) {
@@ -23,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Email validation
         if (!email.includes('@') || !email.includes('.')) {
             isValid = false;
-            messages.push("Email must be valid (include '@' and '.').");
+            messages.push("Please enter a valid email address.");
         }
 
         // Password validation
@@ -33,13 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Display feedback
-        feedbackDiv.style.display = "block"; // Make feedback div visible
+        feedbackDiv.style.display = "block";
+        
         if (isValid) {
             feedbackDiv.textContent = "Registration successful!";
-            feedbackDiv.style.color = "#28a745"; // Green color for success
+            feedbackDiv.style.color = "#28a745"; // Success color
         } else {
-            feedbackDiv.innerHTML = messages.join("<br>");
-            feedbackDiv.style.color = "#dc3545"; // Red color for errors
+            feedbackDiv.innerHTML = messages.join('<br>'); // Join messages with <br> for display
+            feedbackDiv.style.color = "#dc3545"; // Error color
         }
     });
 });
